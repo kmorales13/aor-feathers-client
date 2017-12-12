@@ -25,11 +25,12 @@ export default (client, options = {}) => (type, params) => {
   switch (type) {
     case AUTH_LOGIN:
       const { username, password } = params;
-      return client.authenticate({
-        ...authenticate,
-        usernameField: username,
-        password,
-      });
+      var data = {
+         ...authenticate
+      }
+      data[usernameField] = username;
+      data['password'] = password;
+      return client.authenticate(data);
     case AUTH_LOGOUT:
       localStorage.removeItem(permissionsKey);
       return client.logout();
