@@ -51,7 +51,7 @@ export default (client, options = {}) => {
       case GET_ONE:
         return service.get(params.id)
       case UPDATE:
-        return service.update(params.id, params.data)
+        return service.patch(params.id, params.data)
       case CREATE:
         return service.create(params.data)
       case DELETE:
